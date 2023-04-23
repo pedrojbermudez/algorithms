@@ -24,14 +24,24 @@
 '''
 
 class Solution:
-  def rotate(self, matrix: list[list[int]]) -> None:
-    matrix.reverse()
-    for i in range(len(matrix)):
-      if len(matrix[i]) != len(matrix):
-        return
+  def checkMatrix(self, matrix):
+    len_m = len(matrix)
 
-      for j in range(i):
-        matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    for i in range(len_m):
+      if len_m != len(matrix[i]):
+        return False
+      
+      for j in range(len_m):
+        if matrix[i][j] > 1000 or matrix[i][j] < -1000:
+          return False
+    return True
+  
+  def rotate(self, matrix):
+    if self.checkMatrix(matrix):
+      matrix.reverse()
+      for i in range(len(matrix)):
+        for j in range(i):
+          matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
 def main():
   matrix1 = [[1,2,3],[4,5,6],[7,8,9]]

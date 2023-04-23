@@ -7,7 +7,7 @@
     characters.
 
   Constraints:
-    0 <= s.length <= 5 * 104
+    0 <= s.length <= 5 * 10^4
     s consists of English letters, digits, symbols and spaces.
 
   Example 1:
@@ -29,6 +29,8 @@
 from time import time
 class Solution:
   def lengthOfLongestSubstring(self, s: str) -> int:
+    if len(s) > 5 * 10**4:
+      return
     output = ""
     max_length = 0
 
