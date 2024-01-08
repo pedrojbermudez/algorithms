@@ -8,3 +8,8 @@ class Solution:
         result[template[i % len(template)]] += char
 
     return ''.join(result)
+
+if __name__ == '__main__':
+  sol = Solution()
+  sol.convert("PAYPALISHIRING", 3)
+  sol.convert("PAYPALISHIRING", 4)
