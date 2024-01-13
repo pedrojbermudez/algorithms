@@ -23,35 +23,37 @@
     Input: x = 120
     Output: 21
 '''
-import math
+class Solution:
+    def reverse(self, x: int) -> int:
+        result = 0
+        min_value = -2 ** 31
+        max_value = 2 ** 31 - 1
 
+        while x != 0:
+            if result < min_value / 10 or result > max_value / 10:
+                return 0
 
-def reverse_integer(num: int) -> int:
-  result = 0
+            digit = x % 10 if x > 0 else x % -10
+            result = result * 10 + digit
+            x = int(x / 10)
 
-  if num < (-2)**31 or num > (2**31)-1:
-    return 0
-
-  while num != 0:
-    pop = int(math.fmod(num, 10))
-    num = int(num / 10)
-
-    result = result * 10 + pop
-
-  return result
+        return result
 
 def main():
-  print(reverse_integer(123)) # 321
-  print(reverse_integer(-123)) # -321
-  print(reverse_integer(120)) # 21
-  print(reverse_integer(-81238123)) # -32183218
-  print(reverse_integer(123456789)) # 987654321
-  print(reverse_integer(987654321)) # 123456789
-  print(reverse_integer(123432)) # 234321
-  print(reverse_integer(542324)) # 423245
-  print(reverse_integer(44444)) # 44444
-  print(reverse_integer(4444324234234234244)) # 0
-  print(reverse_integer(-4444324234234234244)) # 0
+    sol = Solution()
+    print(sol.reverse(-10)) # -1
+    print(sol.reverse(1534236469)) # 0
+    print(sol.reverse(123)) # 321
+    print(sol.reverse(-123)) # -321
+    print(sol.reverse(120)) # 21
+    print(sol.reverse(-81238123)) # -32183218
+    print(sol.reverse(123456789)) # 987654321
+    print(sol.reverse(987654321)) # 123456789
+    print(sol.reverse(123432)) # 234321
+    print(sol.reverse(542324)) # 423245
+    print(sol.reverse(44444)) # 44444
+    print(sol.reverse(4444324234234234244)) # 0
+    print(sol.reverse(-4444324234234234244)) # 0
 
 if __name__ == '__main__':
     main()
